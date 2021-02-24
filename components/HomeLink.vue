@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { isExternal, ensureExt } from '../util'
+import { isExternal, ensureExt } from '@parent-theme/util'
 
 export default {
   name: 'CustomLink',
