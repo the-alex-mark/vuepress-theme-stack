@@ -70,13 +70,13 @@ function getHomeLinks() {
             items: [
                 {
                     title: 'Личный кабинет ФЛ',
-                    description: 'Руководства по внедрению',
+                    description: 'Руководства пользователя',
                     icon: '/assets/img/icons/icon-lk_fl.svg',
                     link: '/lk/fl/'
                 },
                 {
                     title: 'Личный кабинет ЮЛ',
-                    description: 'Руководства по внедрению',
+                    description: 'Руководства пользователя',
                     icon: '/assets/img/icons/icon-lk_ul.svg',
                     link: '/lk/ul/'
                 }
@@ -89,7 +89,7 @@ function getHomeLinks() {
             items: [
                 {
                     title: 'Стек-ЖКХ',
-                    description: 'Статьи по разработке',
+                    description: 'Руководства пользователя',
                     icon: '/assets/img/icons/icon-app_lk.png',
                     link: '/mp/lk/'
                 }
