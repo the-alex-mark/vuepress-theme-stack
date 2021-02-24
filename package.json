@@ -1,0 +1,16 @@
+{
+  "name": "vuepress-theme-stack",
+  "version": "1.0.1",
+  "description": "Тема сервиса для документации компании \"Стек\"",
+  "main": "index.js",
+  "author": "Александр Макаров",
+  "license": "MIT",
+  "dependencies": {
+    "@vuepress/plugin-back-to-top": "^1.7.1",
+    "@vuepress/plugin-medium-zoom": "^1.7.1",
+    "@vuepress/plugin-nprogress": "^1.8.2",
+    "flexsearch": "^0.6.32",
+    "he": "^1.2.0",
+    "vuepress-plugin-smooth-scroll": "^0.0.3"
+  }
+}
