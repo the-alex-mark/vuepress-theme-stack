@@ -1,5 +1,5 @@
 <template>
-  <div class="bread-crumbs">
+  <div class="bread-crumbs can-hide">
     <span v-for="(crumb, index) in bread" :key="crumb.path">
 
       <RouterLink
@@ -70,10 +70,9 @@ export default {
   max-width $contentWidth
   margin 0 auto -5.6rem
   padding 5.6rem 2.5rem 2rem
-  @media (max-width: $MQNarrow)
-    padding 5.6rem 2rem 3rem
-  @media (max-width: $MQMobileNarrow)
-    padding 4.8rem 1.5rem 3rem
+  @media (max-width: $MQMobile)
+    &.can-hide
+      display none
   .bread-crumb
     font-size 0.7em
     color #999999

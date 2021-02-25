@@ -150,13 +150,15 @@ export default {
       &:hover
         color $accentColor
   .nav-dropdown
+    padding-top 0.6rem
     .dropdown-item
       color inherit
       line-height 1.7rem
       h4
         margin 0.45rem 0 0
-        border-top 1px solid #eee
-        padding 1rem 1.5rem 0.45rem 1.25rem
+        border-top 1px solid #eeeeee
+        padding 1rem 1.5rem 0 1.25rem
+        font-size 1em !important
       .dropdown-subitem-wrapper
         padding 0
         list-style none

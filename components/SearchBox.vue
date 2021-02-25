@@ -42,7 +42,6 @@
 </template>
 
 <script>
-const he = require("he");
 import Flexsearch from "flexsearch";
 
 export default {
@@ -256,6 +255,7 @@ function highlightText(fullText, highlightTarget) {
   .suggestions
     background white
     width 38rem
+    /*width 26rem*/
     max-height 74vh
     position absolute
     top 1.5rem
@@ -266,6 +266,9 @@ function highlightText(fullText, highlightTarget) {
     list-style-type none
     overflow-x hidden
     overflow-y auto
+    &::-webkit-scrollbar
+      width 0
+      height 0
     &.align-right
       right 0
   .suggestion
@@ -308,20 +311,13 @@ function highlightText(fullText, highlightTarget) {
   .search-box input
     height 2rem
 
-@media (max-width: $MQNarrow) and (min-width: $MQMobile)
-  .search-box
-    .suggestions
-      left 0
-
 @media (max-width: $MQMobile)
   .search-box
     margin-right 0
     input
       left 1rem
-    .suggestions
-      right 0
 
-@media (max-width: $MQMobileNarrow)
+@media (max-width: 670px)
   .search-box
     .suggestions
       width calc(100vw - 4rem)
