@@ -123,5 +123,5 @@ function getFooterLinks() {
 
 ## Дополнительная информация
 
-- [Сайт компании](https://stack-it.ru)
-- [Сайт проекта](https://vuepress.vuejs.org)
+- [Vue](https://vuejs.org)
+- [VuePress](https://vuepress.vuejs.org)
