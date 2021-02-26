@@ -45,8 +45,8 @@ export default {
   display flex
   align-items center
   flex-grow 1
-  padding 18px 22px
-  min-height 89.08px
+  padding 16px 22px
+  min-height 76px
   color inherit
   background-color #FFFFFF
   border-radius 8px
@@ -60,9 +60,9 @@ export default {
   .link-icon
     display block
     margin-right 16px
-    width 42px
+    width 40px
     @media (max-width 520px)
-      width 38px
+      width 36px
       @media (max-width 460px)
         width 32px
   .link-content

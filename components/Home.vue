@@ -44,41 +44,40 @@ export default {
   padding $navbarHeight 0 0
   margin 0 auto
   display block
-  font-family 'Ubuntu', sans-serif
   *, *:before, *:after
     box-sizing border-box
 
 .section-grid
   display flex
   flex-wrap wrap
-  margin-right -28px
-  margin-bottom -28px
+  margin-right -20px
+  margin-bottom -20px
   &:not(:first-child)
-    margin-top 28px
+    margin-top 20px
   &.grid-col-2
     .link
-      width calc(50% - 28px)
+      width calc(50% - 20px)
       @media (max-width 880px)
         width 100%
   &.grid-col-3
     .link
-      width calc(33.3333333% - 28px)
+      width calc(33.3333333% - 20px)
       @media (max-width 1080px)
-        width calc(50% - 28px)
+        width calc(50% - 20px)
       @media (max-width 880px)
         width 100%
   .link
-    margin-right 28px
-    margin-bottom 28px
+    margin-right 20px
+    margin-bottom 20px
     width 100%
 
 @media (max-width 600px)
   .section-grid
-    margin-right -16px
-    margin-bottom -16px
+    margin-right -14px
+    margin-bottom -14px
     &:not(:first-child)
-      margin-top 16px
+      margin-top 14px
     .link
-      margin-right 16px
-      margin-bottom 16px
+      margin-right 14px
+      margin-bottom 14px
 </style>

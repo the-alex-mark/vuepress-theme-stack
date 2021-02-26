@@ -1,20 +1,32 @@
 {
-  "name": "vuepress-theme-stack",
-  "version": "1.0.6",
-  "description": "Тема сервиса для документации компании \"Стек\"",
-  "main": "index.js",
-  "author": "Александр Макаров",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/the-alex-mark/vuepress-theme-stack.git"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@vuepress/plugin-back-to-top": "^1.7.1",
-    "@vuepress/plugin-medium-zoom": "^1.7.1",
-    "@vuepress/plugin-nprogress": "^1.8.2",
-    "flexsearch": "^0.6.32",
-    "he": "^1.2.0",
-    "vuepress-plugin-smooth-scroll": "^0.0.3"
-  }
+    "name": "vuepress-theme-stack",
+    "version": "1.0.7",
+    "description": "Тема сервиса для документации компании \"Стек\"",
+    "keywords": [
+        "vuepress",
+        "vuepress-theme"
+    ],
+    "author": {
+        "name": "Александр Макаров",
+        "email": "the_alex_mark@mail.ru",
+        "url": "https://the-alex-mark.ru"
+    },
+    "homepage": "https://github.com/the-alex-mark/vuepress-theme-stack",
+    "bugs": {
+        "url": "https://github.com/the-alex-mark/vuepress-theme-stack/issues",
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/the-alex-mark/vuepress-theme-stack.git"
+    },
+    "license": "MIT",
+    "main": "index.js",
+    "dependencies": {
+        "@vuepress/plugin-back-to-top": "^1.7.1",
+        "@vuepress/plugin-medium-zoom": "^1.7.1",
+        "@vuepress/plugin-nprogress": "^1.8.2",
+        "flexsearch": "^0.6.32",
+        "he": "^1.2.0",
+        "vuepress-plugin-smooth-scroll": "^0.0.3"
+    }
 }

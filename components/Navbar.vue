@@ -95,9 +95,8 @@ a[target="_blank"] > span
 
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
-  font-family: 'Ubuntu', sans-serif
   line-height $navbarHeight - 1.4rem
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1)
+  box-shadow 0 1px 8px 0 rgba(0, 0, 0, 0.1)
   a, span, img
     display inline-block
   .logo
@@ -105,10 +104,9 @@ a[target="_blank"] > span
     min-width $navbarHeight - 1.4rem
     vertical-align top
   .site-name
-    font-family: 'Ubuntu', sans-serif
     font-size 1.9rem
     font-weight 500
-    line-height 1.1
+    line-height 1.15
     color #1d364c
     position relative
   .links

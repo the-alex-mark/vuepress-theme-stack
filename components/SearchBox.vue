@@ -241,7 +241,7 @@ function highlightText(fullText, highlightTarget) {
     display inline-block
     border 1px solid darken($borderColor, 10%)
     border-radius 0.4rem
-    font-family 'Ubuntu', sans-serif !important
+    font-family inherit
     font-size 0.9rem
     line-height 2rem
     padding 0 0.5rem 0 2rem
