@@ -69,7 +69,7 @@ export default {
 .bread-crumbs
   max-width $contentWidth
   margin 0 auto -5.6rem
-  padding 5.6rem 2.5rem 2rem
+  padding 5.6rem 2.5rem 2.6rem
   @media (max-width: $MQMobile)
     &.can-hide
       display none
