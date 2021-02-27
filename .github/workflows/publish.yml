@@ -10,14 +10,14 @@ jobs:
     name: Публикация пакета
     runs-on: ubuntu-latest
     steps:
-      - name: Проверка репозитория
+      - name: Сheckout
         uses: actions/checkout@v2.3.4
-      - name: Установка Node.JS
+      - name: Setup Node.JS
         uses: actions/setup-node@v2.1.5
         with:
           node-version: '14'
           registry-url: https://registry.npmjs.org
-      - name: Публикация пакета
+      - name: Publish
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
