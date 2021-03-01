@@ -52,6 +52,7 @@ export default {
 
 <style lang="stylus">
 .wrapper.wrapper-footer
+  margin-top auto
   background-color #0A1229
   .copyright
     font-size 0.8rem

@@ -29,12 +29,10 @@ export default {
   &:nth-child(2n)
     background-color rgb(221, 239, 222)
   .container
-    max-width 1700px
+    max-width 1520px
     width calc(100% - 3rem)
     margin-left auto
     margin-right auto
-    @media (max-width 1760px)
-      max-width 1140px
     .section
       padding-bottom 50px
       &:before

@@ -97,6 +97,7 @@ a[target="_blank"] > span
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
   box-shadow 0 1px 8px 0 rgba(0, 0, 0, 0.1)
+  z-index 900
   a, span, img
     display inline-block
   .logo

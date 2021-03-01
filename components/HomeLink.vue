@@ -44,7 +44,6 @@ export default {
 .link
   display flex
   align-items center
-  flex-grow 1
   padding 16px 22px
   min-height 76px
   color inherit

@@ -41,9 +41,11 @@ export default {
 <style lang="stylus">
 .home
   box-sizing border-box
+  display flex
+  flex-direction column
   padding $navbarHeight 0 0
   margin 0 auto
-  display block
+  min-height 100vh
   *, *:before, *:after
     box-sizing border-box
 
@@ -54,16 +56,16 @@ export default {
   margin-bottom -20px
   &:not(:first-child)
     margin-top 20px
-  &.grid-col-2
-    .link
-      width calc(50% - 20px)
-      @media (max-width 880px)
-        width 100%
   &.grid-col-3
     .link
       width calc(33.3333333% - 20px)
       @media (max-width 1080px)
         width calc(50% - 20px)
+      @media (max-width 880px)
+        width 100%
+  &.grid-col-2
+    .link
+      width calc(50% - 20px)
       @media (max-width 880px)
         width 100%
   .link
