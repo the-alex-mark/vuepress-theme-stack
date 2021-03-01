@@ -33,6 +33,8 @@ export default {
     width calc(100% - 3rem)
     margin-left auto
     margin-right auto
+    @media (max-width 1580px)
+      max-width 1140px
     .section
       padding-bottom 50px
       &:before
