@@ -26,7 +26,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'Footer',
 
@@ -54,20 +53,23 @@ export default {
 .wrapper.wrapper-footer
   margin-top auto
   background-color #0A1229
-  .copyright
-    font-size 0.8rem
-    color #9ca5af
-    @media (max-width 750px)
-      margin-top 20px
-      margin-bottom 1.5rem
-
-.footer
-  display flex
-  align-items center
-  justify-content center
-  min-height 52px
   @media (max-width 750px)
-    flex-direction column
+    .container
+      max-width unset
+      width 100%
+  .footer
+    display flex
+    align-items center
+    justify-content center
+    min-height 52px
+    @media (max-width 750px)
+      flex-direction column
+    .copyright
+      font-size 0.8rem
+      color #9ca5af
+      @media (max-width 750px)
+        margin-top 20px
+        margin-bottom 1.5rem
 
 .social-list
   display flex
@@ -102,10 +104,4 @@ export default {
     .social-icon
       display block
       width 32px
-
-@media (max-width 750px)
-  .wrapper.wrapper-footer
-    .container
-      max-width unset
-      width 100%
 </style>
