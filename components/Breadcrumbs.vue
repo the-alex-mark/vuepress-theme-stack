@@ -39,7 +39,9 @@ export default {
         if (page) {
           return {
             path: page.path,
-            title: page.frontmatter.breadcrumb || page.title,
+            title: (page.frontmatter.home)
+              ? page.frontmatter.breadcrumb || page.frontmatter.title || 'Главная'
+              : page.frontmatter.breadcrumb || page.title
           };
         } else {
           return {

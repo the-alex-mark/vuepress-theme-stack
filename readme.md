@@ -13,6 +13,34 @@ npm install vuepress-theme-stack --save
 
 <br>
 
+## Конфигурация
+
+### breadcrumbs
+
+- type: `bool`
+- default: `undefined`
+
+Отображение хлебных крошек.  
+Элементы хлебных крошек берутся из заголовка статьи или `frontmatter`.
+
+### titleTag
+
+- type: `bool|object`
+- default: `undefined`
+
+| Параметр    | Описание                                |
+|:-----------:| --------------------------------------- |
+| `siteTitle` | Заголовок сайта                         |
+| `selfHome`  | Подзаголовок главной страницы           |
+| `self404`   | Подзаголовок страницы со статусом `404` |
+
+Тег заголовка сайта `<title>Document</title>`.
+Элементы заголовка берутся из заголовка статьи или `frontmatter`.
+
+<br>
+
+## Примеры
+
 Настраиваем конфигурацию сервиса:
 ```js
 const { getNavLinks, getHomeLinks, getSidebarLinks, getFooterLinks } = require('./utils')
@@ -36,10 +64,17 @@ module.exports = {
     // Конфигурация темы
     theme: 'stack',
     themeConfig: {
+        logo: '/assets/logo.svg',
+        
+        // Хлебные крошки
         breadcrumbs: true,
-        seo: true,
-        seoTitle: 'Компания "Стек"',
-        logo: '/assets/img/logo.svg',
+
+        // Заголовок страницы
+        titleTag: {
+            siteTitle: 'Компания "Стек"',
+            self404: 'Страница не найдена'
+        },
+
         nav: getNavLinks(),
         sidebar: getSidebarLinks(),
         home: getHomeLinks(),
@@ -49,8 +84,6 @@ module.exports = {
 ```
 
 <br>
-
-## Примеры
 
 Настраиваем главную страницу:
 ```js

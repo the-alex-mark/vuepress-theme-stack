@@ -7,13 +7,26 @@
         Данная страница не найдена, возможно допущена<br>ошибка при вводе URL
       </p>
 
-      <RouterLink :to="$localePath" class="error-button">
-        Вернуться на главную
-      </RouterLink>
+      <button
+        class="error-button"
+        @click="hasHistory() ? $router.go(-1) : $router.push('/')"
+      >
+        {{ (hasHistory()) ? 'Вернуться' : 'Вернуться на главную' }}
+      </button>
 
     </main>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    hasHistory () {
+      return window.history.length > 2
+    }
+  }
+}
+</script>
 
 <style lang="stylus">
 .error
@@ -44,8 +57,11 @@
 .error-button
   display inline-block
   padding 10px 34px
+  font-family inherit
+  font-size 1rem
   color #FFFFFF
   background-color $accentColor
+  border none
   border-radius 4px
   margin-top 30px
   font-weight normal

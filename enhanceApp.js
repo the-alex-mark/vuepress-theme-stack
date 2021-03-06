@@ -9,13 +9,23 @@ export default ({
 	Vue.mixin({
 		computed: {
 			$title () {
-				if (this.$themeConfig.seo) {
+				if (this.$themeConfig.titleTag) {
 					const page = this.$page;
 
-					const siteTitle = this.$themeConfig.seoTitle || this.$siteTitle;
-					const selfTitle = (page.frontmatter.home)
-						? page.frontmatter.seo || this.$site.description
-						: page.frontmatter.seo || page.frontmatter.title || page.title
+					// Установка заголовка сайта
+					let siteTitle = this.$themeConfig.titleTag.siteTitle || this.$siteTitle;
+
+					// Проверка на существование страницы
+					let selfTitle = this.$themeConfig.titleTag.self404 || 'Страница не найдена';
+					if (page.path) {
+
+						// Установка заголовка страницы
+						selfTitle = (page.frontmatter.home)
+							? (this.$themeConfig.titleTag.selfHome === false || this.$themeConfig.titleTag.selfHome === '')
+								? ''
+								: this.$themeConfig.titleTag.selfHome || page.frontmatter.selfTitle || page.frontmatter.title || this.$site.description
+							: page.frontmatter.selfTitle || page.frontmatter.title || page.title
+					}
 
 					return (siteTitle)
 						? (selfTitle) ? [ selfTitle, siteTitle ].join(' – ') : siteTitle
