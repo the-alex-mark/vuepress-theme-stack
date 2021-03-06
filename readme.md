@@ -34,7 +34,7 @@ npm install vuepress-theme-stack --save
 | `selfHome`  | Подзаголовок главной страницы           |
 | `self404`   | Подзаголовок страницы со статусом `404` |
 
-Тег заголовка сайта `<title>Document</title>`.
+Тег заголовка сайта `<title>Document</title>`.  
 Элементы заголовка берутся из заголовка статьи или `frontmatter`.
 
 <br>
