@@ -7,26 +7,13 @@
         Данная страница не найдена, возможно допущена<br>ошибка при вводе URL
       </p>
 
-      <button
-        class="error-button"
-        @click="hasHistory() ? $router.go(-1) : $router.push('/')"
-      >
-        {{ (hasHistory()) ? 'Вернуться' : 'Вернуться на главную' }}
-      </button>
+      <RouterLink :to="$localePath" class="error-button">
+        Вернуться на главную
+      </RouterLink>
 
     </main>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    hasHistory () {
-      return window.history.length > 2
-    }
-  }
-}
-</script>
 
 <style lang="stylus">
 .error
@@ -69,3 +56,9 @@ export default {
     margin-top 20px
     font-size 0.9rem
 </style>
+<script>
+    import DropdownLink from "../components/DropdownLink";
+    export default {
+        components: {DropdownLink}
+    }
+</script>
