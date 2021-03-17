@@ -58,8 +58,12 @@ module.exports = {
 
     // Дополнительные настройки страницы
     head: [
-        [ 'link', { rel: 'icon', href: '/assets/img/favicon.png' } ]
+        [ 'meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' } ],
+        [ 'link', { rel:  'icon',     href:    '/assets/img/favicon.png' } ]
     ],
+
+    // Локализация
+    locales: { '/': { lang: 'ru-RU' } },
 
     // Конфигурация темы
     theme: 'stack',
