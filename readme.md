@@ -76,6 +76,7 @@ module.exports = {
         // Заголовок страницы
         titleTag: {
             siteTitle: 'Компания "Стек"',
+            selfHome: 'Главная',
             self404: 'Страница не найдена'
         },
 
