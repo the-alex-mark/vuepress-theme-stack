@@ -32,7 +32,7 @@ export default {
 
   computed: {
     data () {
-      return this.$themeConfig.home
+      return this.$themeLocaleConfig.home || this.$site.themeConfig.home || {}
     }
   }
 }

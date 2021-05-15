@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'CustomSection',
+  name: 'HomeSection',
 
   props: {
     id:         { type: String, required: false },

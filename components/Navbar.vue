@@ -27,7 +27,7 @@
       } : {}"
     >
       <NavLinks class="can-hide" />
-      <SearchBox />
+      <SearchBox :options="search" />
 
       <div v-if="pdf" class="nav-links" style="margin-left: 1rem;">
         <div class="nav-item">
@@ -53,6 +53,10 @@ export default {
   },
 
   computed: {
+    search () {
+      return this.$themeLocaleConfig.search || this.$site.themeConfig.search || {}
+    },
+
     pdf () {
       return this.$page.pdf;
     }

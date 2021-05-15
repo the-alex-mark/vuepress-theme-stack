@@ -5,7 +5,7 @@
       aria-label="Search"
       :value="query"
       :class="{ focused: focused }"
-      placeholder="Поиск ..."
+      :placeholder="options.placeholder || 'Поиск ...'"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"
@@ -29,9 +29,9 @@
         @mousedown="go(i)"
         @mouseenter="focus(i)"
       >
-        <a :href="s.regularPath" @click.prevent>
+        <a :href="url(s)" @click.prevent>
           <span
-            v-html="s.title || s.regularPath"
+            v-html="s.title || url(s)"
             class="suggestion__title"
           ></span>
           <span v-html="s.text" class="suggestion__result"></span>
@@ -45,6 +45,12 @@
 import Flexsearch from "flexsearch";
 
 export default {
+  name: 'SearchBox',
+
+  props: {
+    options: { type: Object, required: false }
+  },
+
   data() {
     return {
       query: "",
@@ -72,21 +78,26 @@ export default {
       const query = this.query.trim().toLowerCase();
       if (!query) { return; }
 
-      const result = this.index
-        // .search(query, 30)
-        .search({ query, limit: 30, callback: (result) => {
-          const current = this.$router.currentRoute.path;
-          return (!new RegExp(/\/#?[^\/+.]/, 'gy').test(current))
-            ? result
-            : result.filter(i => current.split('/')[1] == i.path.split('/')[1]);
-        }})
-        .map((page) => {
-          return {
-            ...page,
-            title: this.getSuggestionTitle(page),
-            text: this.getSuggestionText(page),
-          };
-        });
+      let result = (this.options.full || false)
+
+          // Глобальный поиск
+          ? this.index.search({ query, limit: 30 })
+
+          // Поиск только внутри текущего раздела
+          : this.index.search({ query, limit: 30, callback: (result) => {
+              const current = this.$router.currentRoute.path;
+              return (!new RegExp(/\/#?[^\/+.]/, 'gy').test(current))
+                  ? result
+                  : result.filter(i => current.split('/')[1] === i.path.split('/')[1]);
+            }});
+
+      result = result.map((page) => {
+        return {
+          title: this.getSuggestionTitle(page),
+          text: this.getSuggestionText(page),
+          ...page,
+        };
+      });
 
       return result;
     },
@@ -99,6 +110,10 @@ export default {
   },
 
   methods: {
+    url(suggestion) {
+      return suggestion.path + ((suggestion.hash) ? suggestion.hash : '');
+    },
+
     getPageLocalePath(page) {
       for (const localePath in this.$site.locales || {}) {
         if (localePath !== "/" && page.path.indexOf(localePath) === 0) {
@@ -115,13 +130,13 @@ export default {
         return true;
 
       searchPaths = Array.isArray(searchPaths)
-        ? searchPaths
-        : new Array(searchPaths);
+          ? searchPaths
+          : new Array(searchPaths);
 
       return (
-        searchPaths.filter((path) => {
-          return page.path.match(path);
-        }).length > 0
+          searchPaths.filter((path) => {
+            return page.path.match(path);
+          }).length > 0
       );
     },
 
@@ -153,14 +168,11 @@ export default {
     },
 
     go(i) {
-      if (!this.showSuggestions) {
+      if (!this.showSuggestions)
         return;
-      }
-      const path = this.suggestions[i].path;
 
-      if (this.$route.path !== path) {
-        this.$router.push(this.suggestions[i].path);
-      }
+      const suggestion = this.suggestions[i];
+      this.$router.push(this.url(suggestion));
 
       this.query = "";
       this.focusIndex = 0;
@@ -177,11 +189,12 @@ export default {
     setupFlexSearch() {
       this.index = new Flexsearch({
         encode: 'icase',
-        tokenize: 'forward',
-        split: /\s+/,
+        tokenize: 'full',
+        split: /(\s+)/g,
+        cache: true,
         doc: {
           id: 'key',
-          field: [ 'title', 'headers', 'content' ]
+          field: [ 'title', 'content' ]
         }
       });
       const { pages } = this.$site;
@@ -194,7 +207,9 @@ export default {
     },
 
     getSuggestionText(page) {
+      const headers = page.headers;
       const content = page.content;
+
       const queryIndex = content
         .toLowerCase()
         .indexOf(this.query.toLowerCase());
@@ -203,14 +218,45 @@ export default {
         queryIndex === -1
           ? content.toLowerCase().indexOf(queryFirstWord.toLowerCase())
           : queryIndex;
-      let prefix = "";
-      if (startIndex > 15) {
-        startIndex -= 15;
-        prefix = ".. ";
+
+      // Поиск ближайшего подзаголовка
+      let isHeader = false;
+      let text = "";
+      if (headers) {
+        for (let header of this.arrayReverseObj(headers)) {
+          let startIndexHeader = page.content
+              .toLowerCase()
+              .indexOf(header.title.toLowerCase());
+          let endIndexHeader = startIndexHeader + header.title.length;
+
+          if (startIndexHeader <= startIndex) {
+            if (startIndex >= startIndexHeader && startIndex <= endIndexHeader) {
+              text = header.title;
+              isHeader = true;
+            }
+
+            page.hash = `#${header.slug}`;
+            break;
+          }
+
+          page.hash = "";
+        }
       }
-      const text = page.content.substr(startIndex, 60);
+
+      let prefix = "";
+      if (isHeader === false) {
+        if (startIndex > 15) {
+          startIndex -= 15;
+          prefix = ".. ";
+        }
+        text = page.content.substr(startIndex, 60);
+      }
       return prefix + highlightText(text, this.query);
     },
+
+    arrayReverseObj(obj) {
+        return Object.keys(obj).sort().reverse().map(key => ({ ...obj[key], key }) );
+    }
   },
 };
 
@@ -255,7 +301,6 @@ function highlightText(fullText, highlightTarget) {
   .suggestions
     background white
     width 38rem
-    /*width 26rem*/
     max-height 74vh
     position absolute
     top 1.5rem
@@ -277,6 +322,7 @@ function highlightText(fullText, highlightTarget) {
     cursor pointer
     border-radius 0.4rem
     a
+      width 100%
       white-space normal
       color lighten($textColor, 35%)
       em

@@ -22,7 +22,7 @@
 import { isExternal, ensureExt } from '@parent-theme/util'
 
 export default {
-  name: 'CustomLink',
+  name: 'HomeLink',
 
   props: {
     item: { type: Object, required: true }

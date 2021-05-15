@@ -1,6 +1,6 @@
 {
     "name": "vuepress-theme-stack",
-    "version": "1.0.20",
+    "version": "1.1.20",
     "description": "Тема сервиса для документации компании \"Стек\"",
     "keywords": [
         "vuepress",
