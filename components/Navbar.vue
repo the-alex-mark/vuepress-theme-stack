@@ -17,7 +17,8 @@
         ref="siteName"
         class="site-name"
         :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
+        v-html="$siteTitle"
+      ></span>
     </RouterLink>
 
     <div
@@ -27,7 +28,7 @@
       } : {}"
     >
       <NavLinks class="can-hide" />
-      <SearchBox :options="search" />
+      <SearchBox v-if="search.enabled === undefined || search.enabled === true" :options="search" />
 
       <div v-if="pdf" class="nav-links" style="margin-left: 1rem;">
         <div class="nav-item">
@@ -123,8 +124,9 @@ a[target="_blank"] > span
     position absolute
     right $navbar-horizontal-padding
     top $navbar-vertical-padding
-    & > *
-      margin-left 1.5rem
+    background linear-gradient(to left, rgba(255, 255, 255, 1) 90%, rgba(0, 0, 0, 0))
+    & > *:not(:last-child)
+      margin-right 1.5rem
     .search-box
       flex: 0 0 auto
       vertical-align top

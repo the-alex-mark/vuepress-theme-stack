@@ -31,6 +31,7 @@ export default {
 
 <style lang="stylus">
 .sidebar
+  z-index 600
   &::-webkit-scrollbar
     width: 0
     height: 0
@@ -49,7 +50,7 @@ export default {
     .nav-item, .repo-link
       display block
       line-height 1.25rem
-      font-size 0.9em
+      font-size 0.9rem
       padding 0.5rem 0 0.5rem 1.5rem
   & > .sidebar-links
     padding 1.5rem 0

@@ -53,6 +53,7 @@ export default {
 .wrapper.wrapper-footer
   margin-top auto
   background-color #0A1229
+  background-image none
   @media (max-width 750px)
     .container
       max-width unset

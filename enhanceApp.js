@@ -1,9 +1,14 @@
+import Clipboard from 'v-clipboard';
+
 export default ({
 	Vue,
 	options,
 	router,
 	siteData
 }) => {
+
+	// Работа с буфером обмена
+	Vue.use(Clipboard);
 
 	// Настройка заголовка страницы
 	Vue.mixin({

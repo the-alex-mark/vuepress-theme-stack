@@ -1,5 +1,5 @@
 <template>
-  <RouterLink v-if="isInternal" :to="link" class="link">
+  <RouterLink v-if="isInternal" :to="link" class="link grid-item">
     <img v-if="item.icon" :src="item.icon" alt="" class="link-icon">
     <div class="link-content">
       <h3 class="link-title">{{ item.title }}</h3>

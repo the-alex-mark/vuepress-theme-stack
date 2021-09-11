@@ -1,10 +1,11 @@
 {
     "name": "vuepress-theme-stack",
     "version": "1.1.20",
-    "description": "Тема сервиса для документации компании \"Стек\"",
+    "description": "Тема сервиса для документации компании «Стек»",
     "keywords": [
         "vuepress",
-        "vuepress-theme"
+        "vuepress-theme",
+        "stack-it"
     ],
     "author": {
         "name": "Александр Макаров",
@@ -27,6 +28,7 @@
         "@vuepress/plugin-nprogress": "^1.8.2",
         "flexsearch": "^0.6.32",
         "he": "^1.2.0",
+        "v-clipboard": "^2.2.3",
         "vuepress-plugin-smooth-scroll": "^0.0.3"
     }
 }
