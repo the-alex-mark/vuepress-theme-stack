@@ -1,23 +1,25 @@
 <template>
   <main class="home">
-    <HomeJumbotron v-if="jumbotron.enabled" :data="jumbotron" />
+    <home-jumbotron v-if="jumbotron.enabled" :data="jumbotron" />
 
-    <HomeSection v-for="category in data" :id="category.slug" :title="category.title">
-      <div :class="'section-grid grid-col-' + (category.columns || 1).toString()">
+    <home-section id="markdown" v-if="content.enabled && content.position === 'top'">
+      <Content class="theme-default-content custom" />
+    </home-section>
+
+    <home-section v-for="category in data.items" :id="category.slug" :title="category.title">
+      <div :class="'grid grid-col-' + (category.columns || 1).toString()">
         <template v-for="item in category.items" v-if="!item.type || item.type === 'link'">
-          <HomeLink v-if="item.link && item.title" :item="item" />
+          <home-link v-if="item.title" :item="item" class="box-shadow grid-item" />
         </template>
         <template v-else>
-          <HomeCard v-if="item.link || item.app && item.title" :item="item" />
+          <home-card v-if="item.title" :item="item" class="box-shadow grid-item" />
         </template>
       </div>
-    </HomeSection>
+    </home-section>
 
-    <HomeSection id="markdown" v-if="isVisibleContent">
+    <home-section id="markdown" v-if="content.enabled && content.position === 'bottom'">
       <Content class="theme-default-content custom" />
-    </HomeSection>
-
-    <Footer />
+    </home-section>
   </main>
 </template>
 
@@ -25,9 +27,6 @@
 import NavLink from '@theme/components/NavLink.vue'
 import HomeJumbotron from '@theme/components/HomeJumbotron.vue'
 import HomeSection from '@theme/components/HomeSection.vue'
-import HomeLink from '@theme/components/HomeLink.vue'
-import HomeCard from '@theme/components/HomeCard.vue'
-import Footer from '@theme/components/Footer.vue'
 
 export default {
   name: 'Home',
@@ -35,74 +34,45 @@ export default {
   components: {
     NavLink,
     HomeJumbotron,
-    HomeSection,
-    HomeLink,
-    HomeCard,
-    Footer
+    HomeSection
   },
 
   computed: {
-    jumbotron () {
-      return this.$themeLocaleConfig.jumbotron || this.$site.themeConfig.jumbotron || {}
-    },
-
     data () {
-      return this.$themeLocaleConfig.home || this.$site.themeConfig.home || {}
+      return this.$config.home || {}
     },
 
-    isVisibleContent() {
-      return (this.$page.content.trim() !== '');
-    }
-  },
+    jumbotron () {
+      return this.data.jumbotron || {};
+    },
 
-  mounted() {
-    console.log(this.$page);
+    content () {
+      let data = this.data.content || {};
+
+      return {
+        enabled: (!data.enabled || data.enabled === true) && this.$page.content.trim() !== '',
+        position: data.position || 'bottom'
+      }
+    }
   }
 }
 </script>
 
 <style lang="stylus">
+//.home
+//  padding $navbarHeight 0 0
+
 .home
   box-sizing border-box
   display flex
   flex-direction column
-  padding $navbarHeight 0 0
   margin 0 auto
   min-height 100vh
   *, *:before, *:after
     box-sizing border-box
 
-.section-grid
-  display flex
-  flex-wrap wrap
-  margin-right -20px
-  margin-bottom -20px
-  &:not(:first-child)
-    margin-top 20px
-  &.grid-col-3
-    .grid-item
-      width calc(33.3333333% - 20px)
-      @media (max-width 1080px)
-        width calc(50% - 20px)
-      @media (max-width 880px)
-        width 100%
-  &.grid-col-2
-    .grid-item
-      width calc(50% - 20px)
-      @media (max-width 880px)
-        width 100%
-  .grid-item
-    margin-right 20px
-    margin-bottom 20px
-    width 100%
-
-@media (max-width 600px)
-  .section-grid
-    margin-right -14px
-    margin-bottom -14px
-    &:not(:first-child)
-      margin-top 14px
-    .grid-item
-      margin-right 14px
-      margin-bottom 14px
+.box-shadow
+  box-shadow 0 2px 18px rgba(141, 157, 166, 0.3)
+  &:hover
+    box-shadow 0 2px 32px rgba(141, 157, 166, 0.398039215686275)
 </style>

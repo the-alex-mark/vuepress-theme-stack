@@ -59,7 +59,7 @@ const { getNavLinks, getHomeLinks, getSidebarLinks, getFooterLinks } = require('
 
 module.exports = {
     title: 'HELP',
-    description: 'Документация программного обеспечения компании "Стек"',
+    description: 'Документация программного обеспечения компании «Стек»',
 
     // Расположение собранного проекта
     dest: './dist',
@@ -98,9 +98,29 @@ module.exports = {
             placeholder: 'Поиск ...'
         },
 
+        // Стартовая страница
+        home: {
+
+            // Блок приветствия
+            jumbotron: {
+                enabled: true,
+                title: '<span class="mobile-narrow-can-hide"><span class="text-accent">Стек</span>.</span>Справочник',
+                description: 'Документация программного обеспечения компании «Стек»',
+                link: { title: 'Начать', url: '#services' }
+            },
+
+            // Блок контента
+            content: {
+                enabled: true,
+                position: 'bottom'
+            },
+
+            trapeze: true,
+            items: getHomeLinks(),
+        },
+
         nav: getNavLinks(),
         sidebar: getSidebarLinks(),
-        home: getHomeLinks(),
         footer: getFooterLinks()
     }
 }
@@ -168,7 +188,7 @@ module.exports = { getFooterLinks }
  */
 function getFooterLinks() {
     return {
-        text: '© 1993 − ' + new Date().getFullYear() + ' Группа компаний "Стек"',
+        text: '© 1993 − ' + new Date().getFullYear() + ' Группа компаний «Стек»',
         link: 'https://stack-it.ru',
         social: getSocialLinks().items
     };

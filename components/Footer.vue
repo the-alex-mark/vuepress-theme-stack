@@ -1,10 +1,8 @@
 <template>
-  <div v-if="copyright" class="wrapper wrapper-footer">
-    <div class="container">
-      <footer id="footer" class="footer">
-        <a v-if="copyright.text" :href="copyright.link || $localePath" class="copyright">
-          {{ copyright.text }}
-        </a>
+    <footer v-if="copyright" id="footer" class="footer">
+     <div class="container">
+       <router-link v-if="isInternal" v-html="copyright.text" :to="copyright.link" class="copyright" />
+       <a v-else v-html="copyright.text" :href="copyright.link" class="copyright" target="_blank"></a>
 
         <div
           v-if="social"
@@ -20,12 +18,13 @@
             <img :src="$withBase(item.icon)" :alt="item.text" class="social-icon">
           </a>
         </div>
-      </footer>
-    </div>
-  </div>
+      </div>
+    </footer>
 </template>
 
 <script>
+import { isExternal } from '@parent-theme/util'
+
 export default {
   name: 'Footer',
 
@@ -37,12 +36,16 @@ export default {
     copyright () {
       return {
         text: this.data.footer || this.$themeConfig.footer.text,
-        link: this.$themeConfig.footer.link
+        link: this.$themeConfig.footer.link || this.$localePath
       }
     },
 
     social () {
       return this.$themeConfig.footer.social;
+    },
+
+    isInternal () {
+      return !isExternal(this.copyright.link)
     }
   }
 }
@@ -50,27 +53,25 @@ export default {
 </script>
 
 <style lang="stylus">
-.wrapper.wrapper-footer
+.footer
   margin-top auto
+  min-height 52px
   background-color #0A1229
   background-image none
-  @media (max-width 750px)
-    .container
-      max-width unset
-      width 100%
-  .footer
+  .container
     display flex
     align-items center
     justify-content center
-    min-height 52px
     @media (max-width 750px)
       flex-direction column
-    .copyright
-      font-size 0.8rem
-      color #9ca5af
-      @media (max-width 750px)
-        margin-top 20px
-        margin-bottom 1.5rem
+      max-width unset
+      width 100%
+  .copyright
+    font-size 0.8rem
+    color #9ca5af
+    @media (max-width 750px)
+      margin-top 20px
+      margin-bottom 1.5rem
 
 .social-list
   display flex

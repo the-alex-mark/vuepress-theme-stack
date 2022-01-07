@@ -10,25 +10,49 @@ export default ({
 	// Работа с буфером обмена
 	Vue.use(Clipboard);
 
-	// Настройка заголовка страницы
+	// Настройка глобальной конфигурации
 	Vue.mixin({
 		computed: {
+
+			/**
+			 * Возвращает конфигурацию сайта.
+			 *
+			 * @returns {Object|{}}
+			 */
+			$config () {
+				if (Object.keys(this.$themeLocaleConfig).length !== 0)
+					return this.$themeLocaleConfig;
+
+				if (Object.keys(this.$site.themeConfig).length !== 0)
+					return this.$site.themeConfig;
+
+				if (Object.keys(this.$themeConfig).length !== 0)
+					return this.$themeConfig;
+
+				return {};
+			},
+
+			/**
+			 * Возвращает заголовок сайта.
+			 *
+			 * @returns {string}
+			 */
 			$title () {
-				if (this.$themeConfig.titleTag) {
+				if (this.$config.titleTag) {
 					const page = this.$page;
 
 					// Установка заголовка сайта
-					let siteTitle = this.$themeConfig.titleTag.siteTitle || this.$siteTitle;
+					let siteTitle = this.$config.titleTag.siteTitle || this.$siteTitle;
 
 					// Проверка на существование страницы
-					let selfTitle = this.$themeConfig.titleTag.self404 || 'Страница не найдена';
+					let selfTitle = this.$config.titleTag.self404 || 'Страница не найдена';
 					if (page.path) {
 
 						// Установка заголовка страницы
 						selfTitle = (page.frontmatter.home)
-							? (this.$themeConfig.titleTag.selfHome === false || this.$themeConfig.titleTag.selfHome === '')
+							? (this.$config.titleTag.selfHome === false || this.$config.titleTag.selfHome === '')
 								? ''
-								: this.$themeConfig.titleTag.selfHome || page.frontmatter.selfTitle || page.frontmatter.title || this.$site.description
+								: this.$config.titleTag.selfHome || page.frontmatter.selfTitle || page.frontmatter.title || this.$site.description
 							: page.frontmatter.selfTitle || page.frontmatter.title || page.title
 					}
 

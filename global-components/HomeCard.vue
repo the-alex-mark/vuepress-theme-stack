@@ -1,12 +1,16 @@
 <template>
-  <div class="card grid-item">
+  <div class="card">
+
+    <!-- Логотип -->
     <img v-if="item.icon" :src="item.icon" alt="" class="card-icon">
 
+    <!-- Описание -->
     <div class="card-content">
       <h3 class="card-title">{{ item.title }}</h3>
       <p v-if="item.description" class="card-description" v-html="item.description"></p>
     </div>
 
+    <!-- Учётная запись -->
     <div v-if="item.access" class="card-access">
       <div v-if="item.access.login" class="access-item">
         <LoginSVG v-bind:class="'access-icon'"/>
@@ -20,6 +24,7 @@
       </div>
     </div>
 
+    <!-- Приложения -->
     <div v-if="item.app" class="card-app">
       <a v-if="item.app.android" :href="item.app.android" target="_blank" class="app-item">
         <img :src="require('../assets/platform/store-android.svg')" alt="Google Play" class="app-image">
@@ -28,7 +33,19 @@
         <img :src="require('../assets/platform/store-ios.svg')" alt="App Store" class="app-image">
       </a>
     </div>
-    <a v-else-if="item.link" :href="item.link" target="_blank" class="card-route">Перейти к демоверсии</a>
+
+    <div v-else-if="item.links || item.link" class="card-links">
+
+      <!-- Ссылка на демонстрационный стенд -->
+      <br>
+      <br>
+      <a v-if="item.links.demo || item.link" :href="item.link" target="_blank" class="card-route">Перейти к демо-стенду</a>
+
+      <!-- Ссылка на документацию -->
+      <br>
+      <a v-if="item.links.help" :href="item.help" target="_blank" class="card-route">Перейти к документации</a>
+    </div>
+
   </div>
 </template>
 
@@ -60,12 +77,9 @@ export default {
   background-color #FFFFFF
   border-radius 8px
   transition 0.3s
-  box-shadow 0 2px 16px rgba(141, 157, 166, 0.2)
   @media (max-width 520px)
     padding 14px 18px
-    min-height unset
-  &:hover
-    box-shadow 0 2px 32px rgba(141, 157, 166, 0.298039215686275)
+    min-height 90px
   .card-icon
     display block
     margin-right 16px
@@ -103,7 +117,7 @@ export default {
         width 24px
         margin-right 4px
       .access-name
-        width 70px
+        width 64px
       .access-value
         margin-left 4px
         transition 0.3s

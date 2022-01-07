@@ -19,6 +19,10 @@ export default {
       return ensureExt(this.to)
     },
 
+    isBlankTarget () {
+      return this.target === '_blank'
+    },
+
     isInternal () {
       return !isExternal(this.to) && !this.isBlankTarget
     }

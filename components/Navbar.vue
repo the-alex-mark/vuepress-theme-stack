@@ -124,7 +124,7 @@ a[target="_blank"] > span
     position absolute
     right $navbar-horizontal-padding
     top $navbar-vertical-padding
-    background linear-gradient(to left, rgba(255, 255, 255, 1) 90%, rgba(0, 0, 0, 0))
+    background linear-gradient(to left, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0))
     & > *:not(:last-child)
       margin-right 1.5rem
     .search-box

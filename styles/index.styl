@@ -1,13 +1,59 @@
 // fonts
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap')
 
-:root
-  --section-corner 120px
-  @media (max-width 823px)
-    --section-corner 50px
-
 body
   font-family 'Ubuntu', sans-serif
+
+.container
+  max-width 1520px
+  width calc(100% - 3rem)
+  margin-left auto
+  margin-right auto
+  @media (max-width 1580px)
+    max-width 1140px
+
+.mobile-can-hide
+  @media (max-width: $MQMobile)
+    display none
+
+.mobile-narrow-can-hide
+  @media (max-width: $MQMobileNarrow)
+    display none
+
+// grid
+.grid
+  display flex
+  flex-wrap wrap
+  margin-right -20px
+  margin-bottom -20px
+  &:not(:first-child)
+    margin-top 20px
+  &.grid-col-3
+    .grid-item
+      width calc(33.3333333% - 20px)
+      @media (max-width 1080px)
+        width calc(50% - 20px)
+      @media (max-width 880px)
+        width 100%
+  &.grid-col-2
+    .grid-item
+      width calc(50% - 20px)
+      @media (max-width 880px)
+        width 100%
+  .grid-item
+    margin-right 20px
+    margin-bottom 20px
+    width 100%
+
+  @media (max-width 600px)
+    .section-grid
+      margin-right -14px
+      margin-bottom -14px
+      &:not(:first-child)
+        margin-top 14px
+      .grid-item
+        margin-right 14px
+        margin-bottom 14px
 
 // layout
 .bread-crumbs,
@@ -30,6 +76,10 @@ body
 // text
 .text-accent
   color $accentColor
+.text-truncate
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
 
 // code
 .theme-code-group__nav-tab,
