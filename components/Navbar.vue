@@ -2,7 +2,7 @@
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
-    <RouterLink
+    <router-link
       :to="$localePath"
       class="home-link"
     >
@@ -19,7 +19,7 @@
         :class="{ 'can-hide': $site.themeConfig.logo }"
         v-html="$siteTitle"
       ></span>
-    </RouterLink>
+    </router-link>
 
     <div
       class="links"
@@ -95,9 +95,6 @@ function css (el, property) {
 $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem
 
-a[target="_blank"] > span
-  display none
-
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
@@ -110,9 +107,8 @@ a[target="_blank"] > span
     min-width $navbarHeight - 1.4rem
     vertical-align top
   .site-name
-    font-size 1.9rem
+    font-size 2rem
     font-weight 500
-    line-height 1.15
     color #1d364c
     position relative
   .links

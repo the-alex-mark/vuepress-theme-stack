@@ -1,6 +1,6 @@
 const he = require("he");
 
-module.exports =  {
+module.exports = {
     theme: 'vuepress-theme-stack',
     extend: '@vuepress/theme-default',
     plugins: [

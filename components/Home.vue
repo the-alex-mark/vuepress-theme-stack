@@ -7,7 +7,7 @@
     </home-section>
 
     <home-section v-for="category in data.items" :id="category.slug" :title="category.title">
-      <div :class="'grid grid-col-' + (category.columns || 1).toString()">
+      <div :class="'grid grid-align-' + (category.align || 'left').toString() + ' grid-col-' + (category.columns || 1).toString()">
         <template v-for="item in category.items" v-if="!item.type || item.type === 'link'">
           <home-link v-if="item.title" :item="item" class="box-shadow grid-item" />
         </template>

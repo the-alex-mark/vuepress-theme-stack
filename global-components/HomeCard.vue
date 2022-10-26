@@ -36,14 +36,22 @@
 
     <div v-else-if="item.links || item.link" class="card-links">
 
-      <!-- Ссылка на демонстрационный стенд -->
-      <br>
-      <br>
-      <a v-if="item.links.demo || item.link" :href="item.link" target="_blank" class="card-route">Перейти к демо-стенду</a>
+      <a href="https://stack-it.ru" target="_blank" class="card-route">
+        <img :src="require('../assets/common/docs_2.svg')" alt="Документация" class="card-route-icon">
+      </a>
 
-      <!-- Ссылка на документацию -->
-      <br>
-      <a v-if="item.links.help" :href="item.help" target="_blank" class="card-route">Перейти к документации</a>
+      <a :href="item.links.demo || item.link" target="_blank" class="card-route">
+        <span class="card-route-text">Демонстрация</span>
+      </a>
+
+<!--      &lt;!&ndash; Ссылка на демонстрационный стенд &ndash;&gt;-->
+<!--      <br>-->
+<!--      <br>-->
+<!--      <a v-if="item.links.demo || item.link" :href="item.link" target="_blank" class="card-route">Перейти к демо-стенду</a>-->
+
+<!--      &lt;!&ndash; Ссылка на документацию &ndash;&gt;-->
+<!--      <br>-->
+<!--      <a v-if="item.links.help" :href="item.help" target="_blank" class="card-route">Перейти к документации</a>-->
     </div>
 
   </div>
@@ -119,6 +127,7 @@ export default {
       .access-name
         width 64px
       .access-value
+        cursor pointer
         margin-left 4px
         transition 0.3s
         &:hover
@@ -156,9 +165,29 @@ export default {
       object-fit contain
       object-position center
 
-  .card-route
+  .card-links
+    display flex
     margin-top 30px
+
+  .card-route
+    display flex
+    justify-content center
+    align-items center
+    min-width 40px
+    height 40px
+    margin-right 10px
+    padding 3px
     width auto
     font-size 1rem
     font-weight normal
+    border 1px solid $accentColor
+    border-radius 100px
+    &:last-child
+      margin-right 0
+    .card-route-icon
+      width 22px
+    .card-route-text
+      display inline-block !important
+      margin-left 10px
+      margin-right 10px
 </style>

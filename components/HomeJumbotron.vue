@@ -43,6 +43,7 @@ export default {
   align-items center
   padding 50px 0
   min-height 60vh
+  overflow hidden
   .section.section-jumbotron
     position relative
     padding-bottom 0
@@ -62,6 +63,16 @@ export default {
       background-position center
       background-size 100%
       background-color unset !important
+      transition 0.8s
+      @media (max-width: 1300px)
+        background-size 90%
+      @media (max-width: $MQMobile)
+        right 50%
+        background-size 80%
+        transform translate(50%, 50%)
+        opacity 0.9
+      @media (max-width: 560px)
+        opacity 0
   .jumbotron-title
     position relative
     margin-top 0
