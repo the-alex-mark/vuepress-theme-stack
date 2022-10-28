@@ -28,8 +28,10 @@
         "@vuepress/plugin-nprogress": "^1.8.2",
         "flexsearch": "^0.6.32",
         "he": "^1.2.0",
+        "smoothscroll-polyfill": "^0.4.4",
         "v-clipboard": "^2.2.3",
-        "vuepress-plugin-smooth-scroll": "^0.0.3"
+        "vue-directive-tooltip": "^1.6.3",
+        "vue-toast-notification": "^0.6.3"
     },
     "devDependencies": {
         "@vuepress/theme-default": "^1.9.5"

@@ -1,0 +1,39 @@
+.grid
+  display flex
+  flex-wrap wrap
+  margin-right -20px
+  margin-bottom -20px
+  &:not(:first-child)
+    margin-top 20px
+  &.grid-align-left
+    justify-content flex-start
+  &.grid-align-center
+    justify-content center
+  &.grid-align-right
+    justify-content flex-end
+  &.grid-col-3
+    .grid-item
+      width calc(33.3333333% - 20px)
+      @media (max-width 1080px)
+        width calc(50% - 20px)
+      @media (max-width 880px)
+        width 100%
+  &.grid-col-2
+    .grid-item
+      width calc(50% - 20px)
+      @media (max-width 880px)
+        width 100%
+  .grid-item
+    margin-right 20px
+    margin-bottom 20px
+    width 100%
+
+  @media (max-width 600px)
+    .section-grid
+      margin-right -14px
+      margin-bottom -14px
+      &:not(:first-child)
+        margin-top 14px
+      .grid-item
+        margin-right 14px
+        margin-bottom 14px

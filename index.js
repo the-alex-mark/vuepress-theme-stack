@@ -1,4 +1,5 @@
-const he = require("he");
+const path = require('path');
+const utils = require('./utils')
 
 module.exports = {
     theme: 'vuepress-theme-stack',
@@ -6,30 +7,16 @@ module.exports = {
     plugins: [
         '@vuepress/plugin-back-to-top',
         '@vuepress/plugin-medium-zoom',
-        '@vuepress/plugin-nprogress',
-        'smooth-scroll'
+        '@vuepress/plugin-nprogress'
+    ],
+    clientRootMixin: path.resolve(__dirname, 'clientRootMixin.js'),
+    enhanceAppFiles: [
+        path.resolve(__dirname, 'enhance/override.js'),
+        path.resolve(__dirname, 'enhance/modules.js'),
+        path.resolve(__dirname, 'enhance/smooth-scroll.js')
     ],
 
     extendPageData($page) {
-        $page.content = getPageText($page);
+        $page.content = utils.decodePageContent($page);
     }
-}
-
-/**
- * Декодирует содержимое страницы из HTML в простой текст.
- *
- * @param  {object} page
- * @return {string}
- */
-function getPageText(page) {
-    if (!page._strippedContent)
-        return "";
-
-    const { html } = page._context.markdown.render(page._strippedContent);
-
-    return he.decode(
-        html
-            .replace(/(<[^>]+>)+/g, " ")
-            .replace(/^\s*#\s/gm, "")
-    );
 }

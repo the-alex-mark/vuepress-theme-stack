@@ -1,0 +1,25 @@
+// default
+@import "~vue-directive-tooltip/dist/vueDirectiveTooltip.css";
+
+// custom
+.vue-tooltip
+    background-color rgba(0, 0, 0, .8) !important
+    opacity 0
+    transition opacity 250ms ease
+.vue-tooltip.vue-tooltip-hidden
+    opacity 0
+.vue-tooltip-visible
+    opacity 1
+    transition opacity 200ms ease-in-out
+.vue-tooltip[x-placement^=bottom]
+    .tooltip-arrow
+        border-bottom-color rgba(0, 0, 0, 0.8) !important
+.vue-tooltip[x-placement^=top]
+    .tooltip-arrow
+        border-top-color rgba(0, 0, 0, 0.8) !important
+.vue-tooltip[x-placement^=right]
+    .tooltip-arrow
+        border-right-color rgba(0, 0, 0, 0.8) !important
+.vue-tooltip[x-placement^=left]
+    .tooltip-arrow
+        border-left-color rgba(0, 0, 0, 0.8) !important

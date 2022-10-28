@@ -1,16 +1,9 @@
-import Clipboard from 'v-clipboard';
-import OutboundLink from './components/override/OutboundLink';
+const utils = require('./utils')
 
 export default ({ Vue, options, router, siteData }) => {
 
-    // Дополнение меню бокового раздела для главной страницы
-    siteData.themeConfig.sidebar = resolveSidebarItems(siteData.themeConfig);
-
-    // Переопределение компонента иконки внешнего ресурса
-    Vue.component('OutboundLink', OutboundLink);
-
-	// Работа с буфером обмена
-	Vue.use(Clipboard);
+    // Дополнение ссылок бокового раздела для главной страницы
+    siteData.themeConfig.sidebar = utils.resolverSidebarRootItems(siteData.themeConfig);
 
 	// Настройка глобальной конфигурации
 	Vue.mixin({
@@ -67,34 +60,4 @@ export default ({ Vue, options, router, siteData }) => {
 			}
         }
 	});
-}
-
-function resolveSidebarItems($config) {
-    let $sidebar = $config.sidebar;
-
-    $sidebar['/'] = [];
-    for (const chapter of $config.home.items) {
-        if (chapter.sidebar === false)
-            continue;
-
-        let children = [];
-        for (const item of chapter.items) {
-            if (item.type !== 'card' && item.link) {
-                children.push({
-                    title: item.title,
-                    path: item.link
-                });
-            }
-        }
-
-        if (children.length && children.length > 0) {
-            $sidebar['/'].push({
-                title: chapter.title,
-                collapsable: false,
-                children: children
-            });
-        }
-    }
-
-    return $sidebar;
 }
