@@ -31,9 +31,11 @@
         "smoothscroll-polyfill": "^0.4.4",
         "v-clipboard": "^2.2.3",
         "vue-directive-tooltip": "^1.6.3",
+        "vue-social-sharing": "^3.0.9",
         "vue-toast-notification": "^0.6.3"
     },
     "devDependencies": {
-        "@vuepress/theme-default": "^1.9.5"
+        "@vuepress/theme-default": "^1.9.5",
+        "vuepress-plugin-one-click-copy": "^1.0.6"
     }
 }

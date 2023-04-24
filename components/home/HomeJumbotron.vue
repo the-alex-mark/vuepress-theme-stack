@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import HomeSection from '@theme/components/HomeSection'
 import ButtonLink from '@theme/components/ButtonLink.vue'
 
 export default {
@@ -18,7 +17,6 @@ export default {
   },
 
   components: {
-    HomeSection,
     ButtonLink
   },
 
@@ -58,7 +56,7 @@ export default {
       width 700px
       height 440px
       transform translateY(50%)
-      background-image url('../assets/Lesson-bro.svg')
+      background-image url('../../assets/Lesson-bro.svg')
       background-repeat no-repeat
       background-position center
       background-size 100%

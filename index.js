@@ -1,5 +1,5 @@
 const path = require('path');
-const utils = require('./utils')
+const utils = require('./scripts/utils')
 
 module.exports = {
     theme: 'vuepress-theme-stack',
@@ -7,13 +7,16 @@ module.exports = {
     plugins: [
         '@vuepress/plugin-back-to-top',
         '@vuepress/plugin-medium-zoom',
-        '@vuepress/plugin-nprogress'
+        '@vuepress/plugin-nprogress',
+        require('./plugins/stack-copy-code')
+        // 'one-click-copy'
     ],
     clientRootMixin: path.resolve(__dirname, 'clientRootMixin.js'),
     enhanceAppFiles: [
-        path.resolve(__dirname, 'enhance/override.js'),
-        path.resolve(__dirname, 'enhance/modules.js'),
-        path.resolve(__dirname, 'enhance/smooth-scroll.js')
+        path.resolve(__dirname, 'scripts/enhance/home.js'),
+        path.resolve(__dirname, 'scripts/enhance/override.js'),
+        path.resolve(__dirname, 'scripts/enhance/modules.js'),
+        path.resolve(__dirname, 'scripts/enhance/smooth-scroll.js')
     ],
 
     extendPageData($page) {

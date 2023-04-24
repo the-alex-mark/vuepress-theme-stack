@@ -1,4 +1,4 @@
-import OutboundLink from '../components/override/OutboundLink';
+import OutboundLink from '../../components/override/OutboundLink';
 
 export default ({ Vue, options, router, siteData }) => {
 

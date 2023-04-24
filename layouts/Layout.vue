@@ -28,8 +28,8 @@
     </Sidebar>
 
     <template v-if="$page.frontmatter.home">
-      <Home />
-      <Footer />
+      <home />
+      <home-footer />
     </template>
 
     <Page
@@ -48,22 +48,18 @@
 </template>
 
 <script>
-import Home from '@theme/components/Home.vue'
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
-import Footer from '@theme/components/Footer.vue'
 import { resolveSidebarItems } from '@parent-theme/util'
 
 export default {
   name: 'Layout',
 
   components: {
-    Home,
     Page,
     Sidebar,
-    Navbar,
-    Footer
+    Navbar
   },
 
   data () {

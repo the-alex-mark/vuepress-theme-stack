@@ -6,7 +6,7 @@
       <Content class="theme-default-content custom" />
     </home-section>
 
-    <home-section v-for="category in data.items" :id="category.slug" :title="category.title">
+    <home-section v-for="category in items" :id="category.slug" :title="category.title">
       <div :class="'grid grid-align-' + (category.align || 'left').toString() + ' grid-col-' + (category.columns || 1).toString()">
         <template v-for="item in category.items" v-if="!item.type || item.type === 'link'">
           <home-link v-if="item.title" :item="item" class="box-shadow grid-item" />
@@ -25,25 +25,25 @@
 
 <script>
 import NavLink from '@theme/components/NavLink.vue'
-import HomeJumbotron from '@theme/components/HomeJumbotron.vue'
-import HomeSection from '@theme/components/HomeSection.vue'
 
 export default {
   name: 'Home',
 
   components: {
-    NavLink,
-    HomeJumbotron,
-    HomeSection
+    NavLink
   },
 
   computed: {
     data () {
-      return this.$config.home || {}
+      return this.$config.home || {};
     },
 
     jumbotron () {
       return this.data.jumbotron || {};
+    },
+
+    items () {
+      return this.$page.frontmatter.data || this.data.items || {};
     },
 
     content () {

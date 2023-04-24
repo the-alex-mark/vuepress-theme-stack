@@ -1,4 +1,4 @@
-const utils = require('./utils')
+const utils = require('./scripts/utils')
 
 export default ({ Vue, options, router, siteData }) => {
 

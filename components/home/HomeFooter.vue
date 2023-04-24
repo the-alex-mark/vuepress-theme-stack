@@ -14,6 +14,9 @@
             :href="item.link"
             target="_blank"
             class="social-link"
+
+            :data-balloon-text="item.text"
+            data-balloon-position="up"
           >
             <img :src="$withBase(item.icon)" :alt="item.text" class="social-icon">
           </a>
@@ -26,7 +29,7 @@
 import { isExternal } from '@parent-theme/util'
 
 export default {
-  name: 'Footer',
+  name: 'HomeFooter',
 
   computed: {
     data () {
@@ -84,7 +87,7 @@ export default {
     display flex
     justify-content center
     align-items center
-    width 68px
+    width 88px
     height 52px
     border-left 1px solid #9ca5af
     transition 0.3s
@@ -97,13 +100,13 @@ export default {
       @media (max-width 750px)
         border-right 1px solid transparent
     &:hover
-      background-color #438a34
-      border-left 1px solid #438a34
+      background-color darken($accentColor, 8)
+      border-left 1px solid darken($accentColor, 8)
     &:hover:last-child
-      border-right 1px solid #438a34
+      border-right 1px solid darken($accentColor, 8)
     &:hover + .social-link
-      border-left 1px solid #438a34
+      border-left 1px solid darken($accentColor, 8)
     .social-icon
       display block
-      width 32px
+      width 24px
 </style>

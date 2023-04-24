@@ -28,11 +28,11 @@ npm install vuepress-theme-stack --save
 - type: `bool|object`
 - default: `undefined`
 
-| Параметр      | Описание                                                           |
-|:-------------:| ------------------------------------------------------------------ |
-| `siteTitle`   | Заголовок сайта                                                    |
-| `selfHome`    | Подзаголовок главной страницы                                      |
-| `self404`     | Подзаголовок страницы со статусом `404`                            |
+| Параметр      | Описание                                                            |
+|:-------------:|---------------------------------------------------------------------|
+| `siteTitle`   | Заголовок сайта                                                     |
+| `selfHome`    | Подзаголовок главной страницы                                       |
+| `self404`     | Подзаголовок страницы со статусом `404`                             |
 
 Тег заголовка сайта `<title>Document</title>`.  
 Элементы заголовка берутся из заголовка статьи или `frontmatter`.
@@ -42,10 +42,10 @@ npm install vuepress-theme-stack --save
 - type: `object`
 - default: `undefined`
 
-| Параметр      | Описание                                                           |
-|:-------------:| ------------------------------------------------------------------ |
-| `full`        | Вид поиска (`true` - во всех разделах, `false` - только в текущем) |
-| `placeholder` | Заполнитель поля поиска                                            |
+| Параметр      | Описание                                                            |
+|:-------------:|---------------------------------------------------------------------|
+| `full`        | Вид поиска (`true` - во всех разделах, `false` - только в текущем)  |
+| `placeholder` | Заполнитель поля поиска                                             |
 
 Настройки полнотекстового поиска.
 
@@ -54,8 +54,9 @@ npm install vuepress-theme-stack --save
 ## Примеры
 
 Настраиваем конфигурацию сервиса:
+
 ```js
-const { getNavLinks, getHomeLinks, getSidebarLinks, getFooterLinks } = require('./utils')
+const {getNavLinks, getHomeLinks, getSidebarLinks, getFooterLinks} = require('./scripts/utils')
 
 module.exports = {
     title: 'HELP',
@@ -70,18 +71,18 @@ module.exports = {
 
     // Дополнительные настройки страницы
     head: [
-        [ 'meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' } ],
-        [ 'link', { rel:  'icon',     href:    '/assets/img/favicon.png' } ]
+        ['meta', {name: 'viewport', content: 'width=device-width, initial-scale=1'}],
+        ['link', {rel: 'icon', href: '/assets/img/favicon.png'}]
     ],
 
     // Локализация
-    locales: { '/': { lang: 'ru-RU' } },
+    locales: {'/': {lang: 'ru-RU'}},
 
     // Конфигурация темы
     theme: 'stack',
     themeConfig: {
         logo: '/assets/logo.svg',
-        
+
         // Хлебные крошки
         breadcrumbs: true,
 
@@ -91,7 +92,7 @@ module.exports = {
             selfHome: 'Главная',
             self404: 'Страница не найдена'
         },
-        
+
         // Поиск
         search: {
             full: false,
@@ -106,7 +107,7 @@ module.exports = {
                 enabled: true,
                 title: '<span class="mobile-narrow-can-hide"><span class="text-accent">Стек</span>.</span>Справочник',
                 description: 'Документация программного обеспечения компании «Стек»',
-                link: { title: 'Начать', url: '#services' }
+                link: {title: 'Начать', url: '#services'}
             },
 
             // Блок контента

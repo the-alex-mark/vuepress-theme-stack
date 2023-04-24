@@ -38,6 +38,10 @@ export default {
   z-index 100
   &:nth-child(even)
     background-color rgb(221, 239, 222)
+    //background-color #ddefde
+    //background-color #d0ebde
+    background-color alpha($accentColor, 0.20)
+    //background-color $accentColor
   .section
     padding-bottom 50px
     &:before
@@ -97,7 +101,7 @@ export default {
 
 .wrapper:last-child
   flex-grow 1
-  &.wrapper-trapeze
+  &.wrapper-t rapeze
     margin-bottom 0
     padding-top 50px
     &:nth-child(odd)
